@@ -95,7 +95,7 @@ def CrawlWeb(seed, max_depth):
 
 
 
-index = []
+
 def AddToIndex(index, keyword, url):
     """
     @Brief: Format the index list to store the keyword, urls, and counts.
@@ -154,5 +154,37 @@ def RecordUserClick(index, keyword, url):
             if entry[0] == url:
                 entry[1] += 1
 
+def MakeString(lst):
+    """
+    @Brief: Make a new string from the element in lst.
+    :param lst: the origin list.
+    :return: new string
+    """
+    s = ''
+    for elem in lst:
+        s += elem
+
+    return s
+
+index = []
+def MakeBigIndex(size):
+    """
+    @Brief: construct the index automatically.
+    :param size: the total size
+    :return: the index list.
+    """
+    index = []
+    letters = ['a', 'a', 'a', 'a', 'a', 'a', 'a']
+    while len(index) < size:
+        word = MakeString(letters)
+        AddToIndex(index, word, 'some string')
+        # following loop is to generate the specified index.
+        for i in range(len(letters) - 1, 0, -1):
+            if letters[i] < 'z':
+                letters[i] = chr(ord(letters[i]) + 1)
+                break
+            else:
+                letters[i] = 'a'
+    return index
 
 
