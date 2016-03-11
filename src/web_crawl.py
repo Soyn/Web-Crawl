@@ -7,7 +7,7 @@
     @CreateTime: 3/3/16.S
 """
 
-def get_page(url):
+def GETPage(url):
     """
     @Brief: To get the web page content
     :param url: the link
@@ -18,31 +18,6 @@ def get_page(url):
         return urllib.urlopen(url).read()
     except:
         return ""
-
-def GetPage(url):
-    try:
-        if url == 'http://www.xkcd.com/353':
-            return """
-        <div id="comicLinks">
-        Comics I enjoy:<br/>
-        <a href="http://threewordphrase.com/">Three Word Phrase</a>,
-        <a href="http://www.smbc-comics.com/">SMBC</a>,
-        <a href="http://www.qwantz.com">Dinosaur Comics</a>,
-        <a href="http://oglaf.com/">Oglaf</a> (nsfw),
-        <a href="http://www.asofterworld.com">A Softer World</a>,
-        <a href="http://buttersafe.com/">Buttersafe</a>,
-        <a href="http://pbfcomics.com/">Perry Bible Fellowship</a>,
-        <a href="http://questionablecontent.net/">Questionable Content</a>,
-        <a href="http://www.buttercupfestival.com/">Buttercup Festival</a>,
-        <a href="http://www.mspaintadventures.com/?s=6&p=001901">Homestuck</a>,
-	    <a href="http://www.jspowerhour.com/">Junior Scientist Power Hour</a>
-</div>
-            """
-        else:
-            return ""
-    except:
-        return ""
-
 
 def GetNextTarget(page):
     """
