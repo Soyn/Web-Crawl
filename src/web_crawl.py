@@ -106,10 +106,10 @@ def AddToIndex(index, keyword, url):
     :param url:
     :return:
     """
-    if index in keyword:
+    if keyword in index:
         index[keyword].append(url)
     else:
-        index[keyword] = [url, 0]
+        index.append([keyword, [url, 0]])
 
 def LookUp(index, keyword):
     """
@@ -181,5 +181,4 @@ def MakeBigIndex(size):
             else:
                 letters[i] = 'a'
     return index
-
 
