@@ -80,7 +80,7 @@ def CrawlWeb(seed, max_depth):
     crawled = []
     next_depth = []
     depth = 0
-    index = []
+    index = {}
     while to_crawl and depth < max_depth:
         page = to_crawl.pop()
         if page not in crawled:
@@ -106,14 +106,10 @@ def AddToIndex(index, keyword, url):
     :param url:
     :return:
     """
-    for entry in index:
-        if entry[0] == keyword:
-            for urls in entry[1]:
-                if urls[0] == url:
-                    return    # this statement can guarantee
-                              # the url only occurs once in the index list
-    # not found, add new entry.
-    index.append([keyword, [[url, 0]]])
+    if index in keyword:
+        index[keyword].append(url)
+    else:
+        index[keyword] = [url, 0]
 
 def LookUp(index, keyword):
     """
@@ -122,9 +118,8 @@ def LookUp(index, keyword):
     :param keyword:
     :return:
     """
-    for entry in index:
-        if entry[0] == keyword:
-            return entry[1]
+    if keyword in index:
+        return index[keyword]
     return None
 
 def AddPageToIndex(index, url, content):
