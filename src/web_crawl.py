@@ -7,7 +7,7 @@
     @CreateTime: 3/3/16.S
 """
 
-def GETPage(url):
+def GetPage(url):
     """
     @Brief: To get the web page content
     :param url: the link
@@ -109,7 +109,7 @@ def AddToIndex(index, keyword, url):
     if keyword in index:
         index[keyword].append(url)
     else:
-        index.append([keyword, [url, 0]])
+        index[keyword] = [url, 0]
 
 def LookUp(index, keyword):
     """
@@ -161,14 +161,13 @@ def MakeString(lst):
 
     return s
 
-index = []
 def MakeBigIndex(size):
     """
     @Brief: construct the index automatically.
     :param size: the total size
     :return: the index list.
     """
-    index = []
+    index = {}
     letters = ['a', 'a', 'a', 'a', 'a', 'a', 'a']
     while len(index) < size:
         word = MakeString(letters)
@@ -181,4 +180,3 @@ def MakeBigIndex(size):
             else:
                 letters[i] = 'a'
     return index
-
