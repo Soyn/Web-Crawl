@@ -3,7 +3,8 @@
 
 """
     @Author: Soyn
-    @Brief: Gets all the links from the web page.
+    @Brief: A simple web crawl and search engine implement.
+    More details in Udacity CS101.
     @CreateTime: 3/3/16.S
 """
 
