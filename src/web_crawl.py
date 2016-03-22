@@ -5,7 +5,7 @@
     @Author: Soyn
     @Brief: A simple web crawl and search engine implement.
     More details in Udacity CS101.
-    @CreateTime: 3/3/16.S
+    @CreateTime: 3/3/16
 """
 
 def GetPage(url):
@@ -119,7 +119,7 @@ def LookUp(index, keyword):
     @Breif: Look up the urls assiciated with the keyword in index list.
     :param index:
     :param keyword:
-    :return:
+    :return: the assicaited urls.
     """
     if keyword in index:
         return index[keyword]
@@ -217,3 +217,22 @@ def ComputeRanks(graph):
         ranks = new_ranks
     return ranks
 
+def LuckyPage(index, ranks, keyword):
+    """
+    @Brief: Get the biggest rank page
+    :param index: the index list which stores the page.
+    :param ranks: the rank graph.
+    :param keyword: the keyword to search.
+    :return: the page which url's rank is the largest.
+    """
+    pages = LookUp(index, keyword)
+
+    if not pages:
+        return None
+    best_page = pages[0]
+
+    for candiate in pages:
+        if ranks[candiate] > best_page:
+            best_page = candiate
+
+    return best_page
