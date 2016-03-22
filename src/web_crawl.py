@@ -30,7 +30,7 @@ def GetNextTarget(page):
     not found return -1.
 
     """
-    start_link = page.find('<a href=')
+    start_link = page.find('href=')
     if start_link == -1:
         return None, 0
 
@@ -236,3 +236,36 @@ def LuckyPage(index, ranks, keyword):
             best_page = candiate
 
     return best_page
+
+def QuickSortPages(pages, ranks):
+    """
+    @Brief: Sort the pages by rank from top to bottom.
+    :param pages: the pages (list represented)
+    :param ranks: the rank (dictionary represented)
+    :return: return a list which represents the pages from
+    top to bottom by rank.
+    """
+    if not page or len(pages) == 1:
+        return pages
+    else:
+        pivot = ranks[pages[0]]  # set pivot
+        worse = []
+        better = []
+        for page in pages[1 : ]:
+            if ranks[page] <= pivot:
+                worse.append(pages)
+            else:
+                better.append(page)
+        return QuickSortPages(better, ranks) + pages[0] + QuickSortPages(worse, ranks)
+
+def OrderedPages(index, ranks, keyword):
+    """
+    @Brief: Ordered pages using quick sort.
+    :param index: The index contains the pages(urls) correspond to their keyword.
+    :param ranks: The ranks dictionary.
+    :param keyword: Keyword needed to search.
+    :return: Return the ordered list.
+    """
+    pages = LookUp(index, keyword)
+    return QuickSortPages(pages, ranks)
+
