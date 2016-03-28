@@ -89,6 +89,7 @@ def CrawlWeb(seed, max_depth):
             content = GetPage(page)
             AddPageToIndex(index, page, content)
             outlinks = GetAllTheLinks(page)
+            graph[page] = outlinks
             Union(next_depth, outlinks)
             crawled.append(page)
         if not to_crawl:
