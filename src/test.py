@@ -7,3 +7,5 @@ from modules import search_engine
 
 url = "https://github.com/Soyn"
 index, graph = spider.CrawlWeb(url, 2)
+print graph
+#print spider.GetAllTheLinks(spider.GetPage(url))

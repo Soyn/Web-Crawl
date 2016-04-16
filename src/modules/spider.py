@@ -33,6 +33,7 @@ def GetAllTheLinks(content):
     links = []
     for link in BeautifulSoup(content).findAll('a', href=True):
         links.append(link['href'])
+    links = [link for link in links if link.startswith('http')]
     return links
 
 def Union(original_list, added_list):
